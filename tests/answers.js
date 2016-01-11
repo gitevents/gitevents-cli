@@ -108,3 +108,28 @@ test('basic answer conversion', function(t) {
 
   t.end();
 });
+
+test('meetup plugin configuration', function(t) {
+  var testAnswers = {
+    configurePlugins: ['Meetup'],
+    meetupGroup: 'BarcelonaJS',
+    meetupGroupId: 123123,
+    meetupDefaultVenueId: 456456,
+    meetupSimpleHtmlDescription: 'Here is something',
+    meetupHosts: [789789],
+    meetupApiKey: 'xyz',
+  };
+
+  var config = answers.toConfig(testAnswers);
+
+  t.equal(config.plugins.meetup.enabled, true);
+  t.equal(config.plugins.meetup.apikey, testAnswers.meetupApiKey);
+  t.equal(config.plugins.meetup.group, testAnswers.meetupGroup);
+  t.equal(config.plugins.meetup.group_id, testAnswers.meetupGroupId);
+  t.equal(config.plugins.meetup.default_venue_id, testAnswers.meetupDefaultVenueId);
+  t.equal(config.plugins.meetup.hosts.length, 1);
+  t.equal(config.plugins.meetup.hosts[0], 789789);
+  t.equal(config.plugins.meetup.simple_html_description, testAnswers.meetupSimpleHtmlDescription);
+
+  t.end();
+});
