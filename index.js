@@ -203,6 +203,6 @@ var questions = [
   },
 ];
 
-inquirer.prompt(questions, function(answers) {
-  console.log(answers);
+inquirer.prompt(questions, function(userAnswers) {
+  console.log(JSON.stringify(answers.toConfig(userAnswers), null, 2));
 });
