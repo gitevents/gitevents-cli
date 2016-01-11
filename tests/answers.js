@@ -161,3 +161,19 @@ test('auth plugin configuration', function(t) {
 
   t.end();
 });
+
+test('stripe plugin configuration', function(t) {
+  var testAnswers = {
+    configurePlugins: ['Stripe'],
+    stripeSecretKey: 'abc',
+    stripePublishableKey: 'xyz',
+  };
+
+  var config = answers.toConfig(testAnswers);
+
+  t.equal(config.plugins.stripe.enabled, true);
+  t.equal(config.plugins.stripe.secretKey, 'abc');
+  t.equal(config.plugins.stripe.publishableKey, 'xyz');
+
+  t.end();
+});
