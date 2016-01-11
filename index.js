@@ -1,7 +1,7 @@
 'use strict';
 
 var inquirer = require('inquirer');
-var answers = require('answers');
+var answers = require('./lib/answers');
 
 var questions = [
   {
