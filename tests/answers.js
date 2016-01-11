@@ -1,6 +1,25 @@
 var test = require('tape');
 var answers = require('../lib/answers');
 
+test('only displaying question when specific checkbox value was selected', function(t) {
+  var testAnswers = {
+    configurePlugins: ['Meetup'],
+  };
+
+  t.equal(answers.wasSelected('configurePlugins', 'Meetup')(testAnswers), true);
+  t.equal(answers.wasSelected('configurePlugins', 'Stripe')(testAnswers), false);
+  t.end();
+});
+
+test('using previous answer as a default', function(t) {
+  var testAnswers = {
+    organiserPostalCode: 'ABC123',
+  };
+
+  t.equal(answers.useAnswer('organiserPostalCode')(testAnswers), testAnswers.organiserPostalCode);
+  t.end();
+});
+
 test('basic answer conversion', function(t) {
   var testAnswers = {
     eventAbout: 'Barcelona.JS is a usergroup focused on JavaScript and related topics.',

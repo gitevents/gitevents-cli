@@ -1,6 +1,7 @@
 "use strict";
 
 var inquirer = require('inquirer');
+var answers = require('answers');
 
 var questions = [
   {
@@ -57,19 +58,19 @@ var questions = [
     type: 'input',
     name: 'eventStreetAddress',
     message: 'Default event location street address',
-    default: useAnswer('organiserStreetAddress'),
+    default: answers.useAnswer('organiserStreetAddress'),
   },
   {
     type: 'input',
     name: 'eventPostalCode',
     message: 'Default event location postal code',
-    default: useAnswer('organiserPostalCode'),
+    default: answers.useAnswer('organiserPostalCode'),
   },
   {
     type: 'input',
     name: 'eventLocality',
     message: 'Default event location address locality (e.g. Barcelona, Spain)',
-    default: useAnswer('organiserLocality'),
+    default: answers.useAnswer('organiserLocality'),
   },
   {
     type: 'input',
@@ -144,75 +145,63 @@ var questions = [
     type: 'input',
     name: 'meetupGroup',
     message: 'Meetup Group',
-    when: wasSelected('configurePlugins', 'Meetup'),
+    when: answers.wasSelected('configurePlugins', 'Meetup'),
   },
   {
     type: 'input',
     name: 'meetupGroupId',
     message: 'Meetup group ID',
-    when: wasSelected('configurePlugins', 'Meetup'),
+    when: answers.wasSelected('configurePlugins', 'Meetup'),
   },
   {
     type: 'input',
     name: 'meetupDefaultVenueId',
     message: 'Meetup default venue ID',
-    when: wasSelected('configurePlugins', 'Meetup'),
+    when: answers.wasSelected('configurePlugins', 'Meetup'),
   },
   {
     type: 'input',
     name: 'meetupSimpleHtmlDescription',
     message: 'Meetup simple HTML description',
-    when: wasSelected('configurePlugins', 'Meetup'),
+    when: answers.wasSelected('configurePlugins', 'Meetup'),
   },
   {
     type: 'input',
     name: 'meetupHosts',
     message: 'Meetup hosts (comma separated list of IDs)',
-    when: wasSelected('configurePlugins', 'Meetup'),
+    when: answers.wasSelected('configurePlugins', 'Meetup'),
   },
   {
     type: 'input',
     name: 'meetupApiKey',
     message: 'Meetup API key',
-    when: wasSelected('configurePlugins', 'Meetup'),
+    when: answers.wasSelected('configurePlugins', 'Meetup'),
   },
   {
     type: 'input',
     name: 'stripeSecretKey',
     message: 'Stripe secret key',
-    when: wasSelected('configurePlugins', 'Stripe'),
+    when: answers.wasSelected('configurePlugins', 'Stripe'),
   },
   {
     type: 'input',
     name: 'stripePublishableKey',
     message: 'Stripe publishable key',
-    when: wasSelected('configurePlugins', 'Stripe'),
+    when: answers.wasSelected('configurePlugins', 'Stripe'),
   },
   {
     type: 'input',
     name: 'authSecret',
     message: 'Auth secret',
-    when: wasSelected('configurePlugins', 'Auth'),
+    when: answers.wasSelected('configurePlugins', 'Auth'),
   },
   {
     type: 'input',
     name: 'authAudience',
     message: 'Auth audience',
-    when: wasSelected('configurePlugins', 'Auth'),
+    when: answers.wasSelected('configurePlugins', 'Auth'),
   },
 ];
-
-function useAnswer(key) {
-  return function (answers) {
-    return answers[key] ? answers[key] : null;
-  };
-};
-
-function wasSelected(key, option) {
-  return function (answers) {
-    return answers[key].indexOf(option) > -1;
-  };
-};
 
 inquirer.prompt(questions, function(answers) {
   console.log(answers);
