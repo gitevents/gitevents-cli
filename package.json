@@ -1,0 +1,42 @@
+{
+  "name": "gitevents-cli",
+  "version": "1.0.0",
+  "description": "Command line utility to make configuring and setting up  [gitevents](https://github.com/gitevents/gitevents-core) easier.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iancrowther/gitevents-cli.git"
+  },
+  "author": "Ian Crowther <ian@nexttick.io> (http://nexttick.io)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iancrowther/gitevents-cli/issues"
+  },
+  "homepage": "https://github.com/iancrowther/gitevents-cli#readme",
+  "dependencies": {
+    "contributor": "^0.1.25"
+  },
+  "contributors": [
+    {
+      "name": "Ian Crowther",
+      "email": "ian@nexttick.io",
+      "url": "https://github.com/iancrowther",
+      "contributions": 1,
+      "additions": 21,
+      "deletions": 0,
+      "hireable": true
+    },
+    {
+      "name": "Niko Nevala",
+      "email": null,
+      "url": "https://github.com/nnevala",
+      "contributions": 2,
+      "additions": 9,
+      "deletions": 0,
+      "hireable": null
+    }
+  ]
+}
