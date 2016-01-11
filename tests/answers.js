@@ -145,3 +145,19 @@ test('jobs plugin configuration', function(t) {
 
   t.end();
 });
+
+test('auth plugin configuration', function(t) {
+  var testAnswers = {
+    configurePlugins: ['Auth'],
+    authSecret: 'abc',
+    authAudience: 'xyz',
+  };
+
+  var config = answers.toConfig(testAnswers);
+
+  t.equal(config.plugins.auth.enabled, true);
+  t.equal(config.plugins.auth.secret, 'abc');
+  t.equal(config.plugins.auth.audience, 'xyz');
+
+  t.end();
+});
