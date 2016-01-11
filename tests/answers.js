@@ -8,8 +8,8 @@ test('only displaying question when specific checkbox value was selected', funct
     configurePlugins: ['Meetup'],
   };
 
-  t.equal(answers.wasSelected('configurePlugins', 'Meetup')(testAnswers), true);
-  t.equal(answers.wasSelected('configurePlugins', 'Stripe')(testAnswers), false);
+  t.equal(answers.wasSelected('configurePlugins', 'Meetup')(testAnswers), true, 'anser was selected');
+  t.equal(answers.wasSelected('configurePlugins', 'Stripe')(testAnswers), false, 'answer was not selected');
   t.end();
 });
 
@@ -18,7 +18,7 @@ test('using previous answer as a default', function(t) {
     organiserPostalCode: 'ABC123',
   };
 
-  t.equal(answers.useAnswer('organiserPostalCode')(testAnswers), testAnswers.organiserPostalCode);
+  t.equal(answers.useAnswer('organiserPostalCode')(testAnswers), testAnswers.organiserPostalCode, 'previous answer ok');
   t.end();
 });
 
@@ -53,60 +53,60 @@ test('basic answer conversion', function(t) {
 
   var config = answers.toConfig(testAnswers);
 
-  t.equal(config.debug, false);
-  t.equal(config.github.user, testAnswers.githubUsername);
-  t.equal(config.github.org, testAnswers.githubOrganisation);
-  t.equal(config.github.repos.planning, testAnswers.githubPlanningRepo);
-  t.equal(config.github.repos.speakers, testAnswers.githubSpeakersRepo);
-  t.equal(config.github.repos.gitevent, testAnswers.githubGiteventRepo);
-  t.equal(config.github.repos.jobs, testAnswers.githubJobsRepo);
-  t.equal(config.github.secret, testAnswers.githubWebhookSecret);
-  t.equal(config.github.token, testAnswers.githubAccessToken);
-  t.equal(config.about, testAnswers.eventAbout);
-  t.equal(config.date_format, 'DD.MM.YYYY');
-  t.equal(config.paths.talks, 'talks/');
-  t.equal(config.paths.events, 'events/');
-  t.equal(config.paths.jobs, 'jobs/');
-  t.equal(config.url, testAnswers.eventUrl);
-  t.equal(config.labels.job, 'job');
-  t.equal(config.labels.talk, 'talk');
-  t.equal(config.labels.proposal, 'proposal');
-  t.equal(config.labels.event, 'event');
-  t.equal(config.labels.hot, 'hot');
-  t.equal(config.schema.default_organizer.type, 'Organization');
-  t.equal(config.schema.default_organizer.address.type, 'PostalAddress');
-  t.equal(config.schema.default_organizer.address.addressLocality, testAnswers.organiserLocality);
-  t.equal(config.schema.default_organizer.address.postalCode, testAnswers.organiserPostalCode);
-  t.equal(config.schema.default_organizer.address.streetAddress, testAnswers.organiserStreetAddress);
-  t.equal(config.schema.default_organizer.email, testAnswers.organiserEmail);
-  t.equal(config.schema.default_organizer.name, testAnswers.organiserName);
-  t.equal(config.schema.default_organizer.url, testAnswers.organiserUrl);
-  t.equal(config.schema.default_talk_url, '/talk/');
-  t.equal(config.schema.default_event_url, '/event/');
-  t.equal(config.schema.default_start_time, testAnswers.startTime);
-  t.equal(config.schema.default_talk.type, 'Educational event');
-  t.equal(config.schema.default_talk.duration, testAnswers.talkDuration);
-  t.equal(config.schema.default_event.context, 'http://schema.org');
-  t.equal(config.schema.default_event.type, 'Social event');
-  t.equal(config.schema.default_event.location.type, 'Place');
-  t.equal(config.schema.default_event.location.address.type, 'PostalAddress');
-  t.equal(config.schema.default_event.location.address.addressLocality, testAnswers.eventLocality);
-  t.equal(config.schema.default_event.location.address.postalCode, testAnswers.eventPostalCode);
-  t.equal(config.schema.default_event.location.address.streetAddress, testAnswers.eventStreetAddress);
-  t.equal(config.schema.default_event.location.address.name, testAnswers.eventLocationName);
-  t.equal(config.schema.default_event.location.url, testAnswers.eventLocationUrl);
-  t.equal(config.schema.default_event.duration, testAnswers.eventDuration);
-  t.equal(config.schema.default_event.url, testAnswers.eventUrl);
-  t.equal(config.schema.doorTime, testAnswers.doorTime);
-  t.equal(config.schema.inLanguage.type, 'Language');
-  t.equal(config.schema.inLanguage.name, 'English');
+  t.equal(config.debug, false, 'debug');
+  t.equal(config.github.user, testAnswers.githubUsername, 'gh username');
+  t.equal(config.github.org, testAnswers.githubOrganisation, 'gh organisation');
+  t.equal(config.github.repos.planning, testAnswers.githubPlanningRepo, 'gh planning repo');
+  t.equal(config.github.repos.speakers, testAnswers.githubSpeakersRepo, 'gh speakers repo');
+  t.equal(config.github.repos.gitevent, testAnswers.githubGiteventRepo, 'gh gitevent repo');
+  t.equal(config.github.repos.jobs, testAnswers.githubJobsRepo, 'gh jobs repo');
+  t.equal(config.github.secret, testAnswers.githubWebhookSecret, 'gh webhook secret');
+  t.equal(config.github.token, testAnswers.githubAccessToken, 'gh access token');
+  t.equal(config.about, testAnswers.eventAbout, 'about');
+  t.equal(config.date_format, 'DD.MM.YYYY', 'date format');
+  t.equal(config.paths.talks, 'talks/', 'talks path');
+  t.equal(config.paths.events, 'events/', 'events path');
+  t.equal(config.paths.jobs, 'jobs/', 'jobs path');
+  t.equal(config.url, testAnswers.eventUrl, 'url');
+  t.equal(config.labels.job, 'job', 'job label');
+  t.equal(config.labels.talk, 'talk', 'talk label');
+  t.equal(config.labels.proposal, 'proposal', 'proposal label');
+  t.equal(config.labels.event, 'event', 'event label');
+  t.equal(config.labels.hot, 'hot', 'hot label');
+  t.equal(config.schema.default_organizer.type, 'Organization', 'org type');
+  t.equal(config.schema.default_organizer.address.type, 'PostalAddress', 'org address type');
+  t.equal(config.schema.default_organizer.address.addressLocality, testAnswers.organiserLocality, 'org address locality');
+  t.equal(config.schema.default_organizer.address.postalCode, testAnswers.organiserPostalCode, 'org address postal code');
+  t.equal(config.schema.default_organizer.address.streetAddress, testAnswers.organiserStreetAddress, 'org address street address');
+  t.equal(config.schema.default_organizer.email, testAnswers.organiserEmail, 'org email');
+  t.equal(config.schema.default_organizer.name, testAnswers.organiserName, 'org name');
+  t.equal(config.schema.default_organizer.url, testAnswers.organiserUrl, 'org url');
+  t.equal(config.schema.default_talk_url, '/talk/', 'talk url');
+  t.equal(config.schema.default_event_url, '/event/', 'event url');
+  t.equal(config.schema.default_start_time, testAnswers.startTime, 'start time');
+  t.equal(config.schema.default_talk.type, 'Educational event', 'talk type');
+  t.equal(config.schema.default_talk.duration, testAnswers.talkDuration, 'talk duration');
+  t.equal(config.schema.default_event.context, 'http://schema.org', 'event context');
+  t.equal(config.schema.default_event.type, 'Social event', 'event type');
+  t.equal(config.schema.default_event.location.type, 'Place', 'location type');
+  t.equal(config.schema.default_event.location.address.type, 'PostalAddress', 'event address type');
+  t.equal(config.schema.default_event.location.address.addressLocality, testAnswers.eventLocality, 'event address locality');
+  t.equal(config.schema.default_event.location.address.postalCode, testAnswers.eventPostalCode, 'event address postal code');
+  t.equal(config.schema.default_event.location.address.streetAddress, testAnswers.eventStreetAddress, 'event address street address');
+  t.equal(config.schema.default_event.location.address.name, testAnswers.eventLocationName, 'event address location name');
+  t.equal(config.schema.default_event.location.url, testAnswers.eventLocationUrl, 'event location url');
+  t.equal(config.schema.default_event.duration, testAnswers.eventDuration, 'event duration');
+  t.equal(config.schema.default_event.url, testAnswers.eventUrl, 'event url');
+  t.equal(config.schema.doorTime, testAnswers.doorTime, 'door time');
+  t.equal(config.schema.inLanguage.type, 'Language', 'language type');
+  t.equal(config.schema.inLanguage.name, 'English', 'language name');
 
   t.equal(config.rollbar, undefined);
 
-  t.equal(config.plugins.jobs.enabled, false);
-  t.equal(config.plugins.meetup.enabled, false);
-  t.equal(config.plugins.auth.enabled, false);
-  t.equal(config.plugins.stripe.enabled, false);
+  t.equal(config.plugins.jobs.enabled, false, 'jobs not enabled');
+  t.equal(config.plugins.meetup.enabled, false, 'meetup not enabled');
+  t.equal(config.plugins.auth.enabled, false, 'auth not enabled');
+  t.equal(config.plugins.stripe.enabled, false, 'stripe not enabled');
 
   t.end();
 });
@@ -124,14 +124,14 @@ test('meetup plugin configuration', function(t) {
 
   var config = answers.toConfig(testAnswers);
 
-  t.equal(config.plugins.meetup.enabled, true);
-  t.equal(config.plugins.meetup.apikey, testAnswers.meetupApiKey);
-  t.equal(config.plugins.meetup.group, testAnswers.meetupGroup);
-  t.equal(config.plugins.meetup.group_id, testAnswers.meetupGroupId);
-  t.equal(config.plugins.meetup.default_venue_id, testAnswers.meetupDefaultVenueId);
-  t.equal(config.plugins.meetup.hosts.length, 1);
-  t.equal(config.plugins.meetup.hosts[0], 789789);
-  t.equal(config.plugins.meetup.simple_html_description, testAnswers.meetupSimpleHtmlDescription);
+  t.equal(config.plugins.meetup.enabled, true, 'enabled');
+  t.equal(config.plugins.meetup.apikey, testAnswers.meetupApiKey, 'api key');
+  t.equal(config.plugins.meetup.group, testAnswers.meetupGroup, 'group');
+  t.equal(config.plugins.meetup.group_id, testAnswers.meetupGroupId, 'group id');
+  t.equal(config.plugins.meetup.default_venue_id, testAnswers.meetupDefaultVenueId, 'venue id');
+  t.equal(config.plugins.meetup.hosts.length, 1, 'hosts length');
+  t.equal(config.plugins.meetup.hosts[0], 789789, 'hosts value');
+  t.equal(config.plugins.meetup.simple_html_description, testAnswers.meetupSimpleHtmlDescription, 'html description');
 
   t.end();
 });
@@ -143,7 +143,7 @@ test('jobs plugin configuration', function(t) {
 
   var config = answers.toConfig(testAnswers);
 
-  t.equal(config.plugins.jobs.enabled, true);
+  t.equal(config.plugins.jobs.enabled, true, 'enabled');
 
   t.end();
 });
@@ -157,9 +157,9 @@ test('auth plugin configuration', function(t) {
 
   var config = answers.toConfig(testAnswers);
 
-  t.equal(config.plugins.auth.enabled, true);
-  t.equal(config.plugins.auth.secret, 'abc');
-  t.equal(config.plugins.auth.audience, 'xyz');
+  t.equal(config.plugins.auth.enabled, true, 'enabled');
+  t.equal(config.plugins.auth.secret, 'abc', 'secret');
+  t.equal(config.plugins.auth.audience, 'xyz', 'audience');
 
   t.end();
 });
@@ -173,9 +173,9 @@ test('stripe plugin configuration', function(t) {
 
   var config = answers.toConfig(testAnswers);
 
-  t.equal(config.plugins.stripe.enabled, true);
-  t.equal(config.plugins.stripe.secretKey, 'abc');
-  t.equal(config.plugins.stripe.publishableKey, 'xyz');
+  t.equal(config.plugins.stripe.enabled, true, 'enabled');
+  t.equal(config.plugins.stripe.secretKey, 'abc', 'secret key');
+  t.equal(config.plugins.stripe.publishableKey, 'xyz', 'publishable key');
 
   t.end();
 });
