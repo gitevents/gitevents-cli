@@ -133,3 +133,15 @@ test('meetup plugin configuration', function(t) {
 
   t.end();
 });
+
+test('jobs plugin configuration', function(t) {
+  var testAnswers = {
+    configurePlugins: ['Jobs'],
+  };
+
+  var config = answers.toConfig(testAnswers);
+
+  t.equal(config.plugins.jobs.enabled, true);
+
+  t.end();
+});
