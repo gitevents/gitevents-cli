@@ -1,3 +1,5 @@
+'use strict';
+
 var test = require('tape');
 var answers = require('../lib/answers');
 
