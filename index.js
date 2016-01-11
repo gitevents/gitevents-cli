@@ -51,7 +51,7 @@ var questions = [
   },
   {
     type: 'input',
-    name: 'eventUrl',
+    name: 'eventLocationUrl',
     message: 'Default event location URL (e.g. https://www.mobileworldcentre.com)',
   },
   {
