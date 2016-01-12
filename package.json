@@ -1,7 +1,7 @@
 {
   "name": "gitevents-cli",
   "version": "0.0.1",
-  "description": "Gitevents command line utility",
+  "description": "Command line utility to make configuring and setting up Gitevents easier.",
   "main": "index.js",
   "dependencies": {
     "inquirer": "^0.11.2",
