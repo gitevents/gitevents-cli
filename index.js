@@ -139,8 +139,8 @@ var questions = [
   },
   {
     type: 'input',
-    name: 'meetupGroup',
-    message: 'Meetup Group',
+    name: 'meetupGroupName',
+    message: 'Meetup Group Name',
     when: answers.useAnswer('configureMeetup'),
   },
   {
@@ -166,7 +166,8 @@ var questions = [
     name: 'meetupHosts',
     message: 'Meetup hosts (comma separated list of IDs)',
     when: answers.useAnswer('configureMeetup'),
-  },
+    filter: answers.csvToArray,
+  }
   {
     type: 'input',
     name: 'meetupApiKey',

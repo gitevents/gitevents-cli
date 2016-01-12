@@ -12,6 +12,11 @@ test('using previous answer as a default', function(t) {
   t.end();
 });
 
+test('filtering csv answer to an array', function(t) {
+  t.deepEqual(answers.csvToArray('123, 456'), ['123', '456']);
+  t.end();
+});
+
 test('basic answer conversion', function(t) {
   var testAnswers = {
     eventAbout: 'Barcelona.JS is a usergroup focused on JavaScript and related topics.',
@@ -103,12 +108,12 @@ test('basic answer conversion', function(t) {
 
 test('meetup plugin configuration', function(t) {
   var testAnswers = {
-    configurePlugins: ['Meetup'],
-    meetupGroup: 'BarcelonaJS',
+    configureMeetup: true,
+    meetupGroupName: 'BarcelonaJS',
     meetupGroupId: 123123,
     meetupDefaultVenueId: 456456,
     meetupSimpleHtmlDescription: 'Here is something',
-    meetupHosts: [789789],
+    meetupHosts: ['123', '35', '9'],
     meetupApiKey: 'xyz',
   };
 
@@ -116,11 +121,13 @@ test('meetup plugin configuration', function(t) {
 
   t.equal(config.plugins.meetup.enabled, true, 'enabled');
   t.equal(config.plugins.meetup.apikey, testAnswers.meetupApiKey, 'api key');
-  t.equal(config.plugins.meetup.group, testAnswers.meetupGroup, 'group');
+  t.equal(config.plugins.meetup.group, testAnswers.meetupGroupName, 'group');
   t.equal(config.plugins.meetup.group_id, testAnswers.meetupGroupId, 'group id');
   t.equal(config.plugins.meetup.default_venue_id, testAnswers.meetupDefaultVenueId, 'venue id');
-  t.equal(config.plugins.meetup.hosts.length, 1, 'hosts length');
-  t.equal(config.plugins.meetup.hosts[0], 789789, 'hosts value');
+  t.equal(config.plugins.meetup.hosts.length, 3, 'hosts length');
+  t.equal(config.plugins.meetup.hosts[0], '123', 'hosts value');
+  t.equal(config.plugins.meetup.hosts[1], '35', 'hosts value');
+  t.equal(config.plugins.meetup.hosts[2], '9', 'hosts value');
   t.equal(config.plugins.meetup.simple_html_description, testAnswers.meetupSimpleHtmlDescription, 'html description');
 
   t.end();
@@ -128,7 +135,7 @@ test('meetup plugin configuration', function(t) {
 
 test('jobs plugin configuration', function(t) {
   var testAnswers = {
-    configurePlugins: ['Jobs'],
+    configureJobs: true,
   };
 
   var config = answers.toConfig(testAnswers);
@@ -140,7 +147,7 @@ test('jobs plugin configuration', function(t) {
 
 test('auth plugin configuration', function(t) {
   var testAnswers = {
-    configurePlugins: ['Auth'],
+    configureAuth: true,
     authSecret: 'abc',
     authAudience: 'xyz',
   };
@@ -156,7 +163,7 @@ test('auth plugin configuration', function(t) {
 
 test('stripe plugin configuration', function(t) {
   var testAnswers = {
-    configurePlugins: ['Stripe'],
+    configureStripe: true,
     stripeSecretKey: 'abc',
     stripePublishableKey: 'xyz',
   };
