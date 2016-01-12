@@ -3,16 +3,6 @@
 var test = require('tape');
 var answers = require('../lib/answers');
 
-test('only displaying question when specific checkbox value was selected', function(t) {
-  var testAnswers = {
-    configurePlugins: ['Meetup'],
-  };
-
-  t.equal(answers.wasSelected('configurePlugins', 'Meetup')(testAnswers), true, 'anser was selected');
-  t.equal(answers.wasSelected('configurePlugins', 'Stripe')(testAnswers), false, 'answer was not selected');
-  t.end();
-});
-
 test('using previous answer as a default', function(t) {
   var testAnswers = {
     organiserPostalCode: 'ABC123',
