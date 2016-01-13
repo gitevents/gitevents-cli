@@ -30,21 +30,6 @@ test('filtering hours to duration', function(t) {
   t.end();
 });
 
-test('validating answers', function(t) {
-  t.equal(answers.createValidator(answers.isNotEmpty)(''), false, 'required answer missing');
-  t.equal(answers.createValidator(answers.isNotEmpty)('something'), true, 'required answer provided');
-  t.equal(answers.createValidator(answers.isNumeric)('foobar'), false, 'random string is not numeric');
-  t.equal(answers.createValidator(answers.isNumeric)('0.5'), true, 'decimal string is numeric');
-  t.equal(answers.createValidator(answers.isNumeric)('1'), true, 'int string is numeric');
-  t.equal(answers.createValidator(answers.isNumeric)('1.2'), true, 'numeric string is numeric');
-  t.equal(answers.createValidator(answers.isTimeEntry)('foobar'), false, 'random string is not time entry');
-  t.equal(answers.createValidator(answers.isTimeEntry)('25:10'), false, 'invalid time entry is not ok');
-  t.equal(answers.createValidator(answers.isTimeEntry)('25:69'), false, 'invalid time entry is not ok 2');
-  t.equal(answers.createValidator(answers.isTimeEntry)('00:10'), true, 'time entry is ok');
-  t.equal(answers.createValidator(answers.isTimeEntry)('19:28'), true, 'time entry is ok 2');
-  t.end();
-});
-
 test('basic answer conversion', function(t) {
   var testAnswers = {
     eventAbout: 'Barcelona.JS is a usergroup focused on JavaScript and related topics.',
