@@ -1,7 +1,8 @@
 'use strict';
 
 var program = require('commander')
-var createConfig = require('./lib/createConfig');
+var configureCmd = require('./lib/commands/configure');
+var initCmd = require('./lib/commands/init');
 
 program
   .version('0.0.1')
@@ -10,7 +11,14 @@ program
   .command('config')
   .description('Run interactive configuration generator')
   .action(function(env, options) {
-    createConfig.run();
+    configureCmd.run();
+  });
+
+program
+  .command('init')
+  .description('Run interactive gitevents initialisation')
+  .action(function(env, options) {
+    initCmd.run();
   });
 
 program.parse(process.argv);
