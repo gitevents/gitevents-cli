@@ -1,8 +1,8 @@
-'use strict';
+#! /usr/bin/env node
 
 var program = require('commander')
-var configureCmd = require('./lib/commands/configure');
-var initCmd = require('./lib/commands/init');
+var configureCmd = require('../lib/commands/configure');
+var initCmd = require('../lib/commands/init');
 
 program
   .version('0.0.1')
