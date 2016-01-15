@@ -2,10 +2,17 @@
   "name": "gitevents-cli",
   "version": "0.0.1",
   "description": "Command line utility to make configuring and setting up Gitevents easier.",
-  "main": "index.js",
+  "bin": {
+    "gitevents": "bin/gitevents.js"
+  },
   "dependencies": {
+    "chalk": "^1.1.1",
+    "commander": "^2.9.0",
+    "contributor": "^0.1.25",
+    "github": "^0.2.4",
     "inquirer": "^0.11.2",
-    "contributor": "^0.1.25"
+    "request": "^2.67.0",
+    "rx": "^4.0.7"
   },
   "devDependencies": {
     "tap-spec": "^4.1.1",
