@@ -1,6 +1,6 @@
 # gitevents-cli
 
-Command line utility to make configuring and setting up  [gitevents](https://github.com/gitevents/gitevents-core) easier.
+Command line utility to make configuring and setting up  [gitevents](https://github.com/gitevents/core) easier.
 
 ## Usage:
 
@@ -8,7 +8,8 @@ Until gitevents-cli is ready to be published on NPM (and potentially included in
 
 After that you should be able to run the command `gitevents` and follow the instructions:
 
-```$ gitevents
+```
+$ gitevents
 
   Usage: gitevents [options] [command]
 
